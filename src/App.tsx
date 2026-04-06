@@ -179,7 +179,7 @@ export default function App() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative z-10 text-center px-4 mt-[180px] md:mt-[220px]"
+          className="relative z-10 text-center px-4 mt-[320px] md:mt-[220px]"
         >
           <h1 className="text-6xl md:text-8xl font-serif mb-6">
             Karina & <br className="md:hidden" /> Javier
