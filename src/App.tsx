@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  Music, 
-  Gift, 
-  CheckCircle2, 
-  XCircle, 
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  Music,
+  Gift,
+  CheckCircle2,
+  XCircle,
   Info,
   Heart,
   ExternalLink,
@@ -19,7 +19,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useRef } from 'react';
-const coupleImage = "/1.jpg";
+const coupleImage = "/1.png";
+const coupleImageV = "/2.png";
 
 const AnimatedIcon = ({ icon: Icon, className = "", size = "w-6 h-6" }: { icon: any, className?: string, size?: string }) => (
   <motion.div
@@ -151,13 +152,13 @@ export default function App() {
     setRsvpStatus(status);
     const phoneNumber = "5493814066123";
     let message = "";
-    
+
     if (status === 'confirmed') {
       message = `¡Hola! Confirmo mi asistencia a la boda de Karina & Javier.\n\nNombre/Grupo: ${name || 'No especificado'}\nTema recomendado: ${music || 'No especificado'}\n\n¡Nos vemos pronto!`;
     } else {
       message = `Hola, lamentablemente no podré asistir a la boda de Karina & Javier. (Atte: ${name || 'Invitado'})\n\n¡Gracias por la invitación!`;
     }
-    
+
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -166,35 +167,31 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80" 
-            alt="Wedding" 
+          <img
+            src={coupleImage}
+            alt="Karina & Javier"
             className="w-full h-full object-cover brightness-50"
             referrerPolicy="no-referrer"
           />
         </div>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative z-10 text-center px-4"
+          className="relative z-10 text-center px-4 mt-28 md:mt-32"
         >
-          <h1 className="text-6xl md:text-8xl font-serif mb-8">
+          <h1 className="text-6xl md:text-8xl font-serif mb-6">
             Karina & <br className="md:hidden" /> Javier
           </h1>
 
-          <p className="max-w-xs mx-auto text-sm opacity-90 leading-relaxed mb-8">
-            Nos encantaría que seas parte de este momento tan especial para nosotros.
-          </p>
-          
-          <div className="w-12 h-[1px] bg-white/50 mx-auto mb-8" />
-          
+          <div className="w-12 h-[1px] bg-white/50 mx-auto mb-6" />
+
           <p className="text-xl tracking-[0.4em] font-light">02 MAY 2026</p>
-          
+
           <CountdownTimer targetDate="2026-05-02T21:00:00" />
         </motion.div>
-        
+
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
           <div className="w-[1px] h-12 bg-white mx-auto" />
         </div>
@@ -204,7 +201,7 @@ export default function App() {
         {/* Cuándo & Dónde */}
         <section>
           <SectionTitle subtitle="DETALLES DEL EVENTO">Cuándo & Dónde</SectionTitle>
-          
+
           <div className="space-y-6">
             <Card className="bg-cream border-none text-center py-10">
               <AnimatedIcon icon={Calendar} className="mb-4 text-gold" />
@@ -222,9 +219,9 @@ export default function App() {
                 <h3 className="text-lg font-medium mb-1">Ceremonia</h3>
                 <p className="text-gray-600 text-xs mb-1 font-medium">Parroquia Sagrada Familia</p>
                 <p className="text-gray-500 text-[10px] mb-4">Caseros 351, Alderetes, Tucumán</p>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=Caseros+351,+Alderetes,+Tucumán" 
-                  target="_blank" 
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Caseros+351,+Alderetes,+Tucumán"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] uppercase tracking-widest font-bold text-gold flex items-center gap-1 mx-auto hover:underline"
                 >
@@ -237,9 +234,9 @@ export default function App() {
                 <h3 className="text-lg font-medium mb-1">Fiesta</h3>
                 <p className="text-gray-600 text-xs mb-1 font-medium">Salón Isabella</p>
                 <p className="text-gray-500 text-[10px] mb-4">Ayacucho 104, Alderetes, Tucumán</p>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=Ayacucho+104,+Alderetes,+Tucumán" 
-                  target="_blank" 
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Ayacucho+104,+Alderetes,+Tucumán"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] uppercase tracking-widest font-bold text-gold flex items-center gap-1 mx-auto hover:underline"
                 >
@@ -268,7 +265,7 @@ export default function App() {
           <Card className="bg-cream border-none text-center py-12">
             <AnimatePresence mode="wait">
               {rsvpStatus === 'pending' ? (
-                <motion.div 
+                <motion.div
                   key="pending"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -276,12 +273,12 @@ export default function App() {
                   className="space-y-8"
                 >
                   <p className="text-gray-600 italic">Por favor, confirmanos tu asistencia antes del 18 de abril.</p>
-                  
+
                   <div className="space-y-4 max-w-sm mx-auto text-left">
                     <div>
                       <label className="block text-[10px] uppercase tracking-widest text-gold mb-2">Nombre y Apellido / Grupo Familiar</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Ej: Familia Pérez / Juan Gómez"
@@ -290,8 +287,8 @@ export default function App() {
                     </div>
                     <div>
                       <label className="block text-[10px] uppercase tracking-widest text-gold mb-2">Recomendación para el DJ</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={music}
                         onChange={(e) => setMusic(e.target.value)}
                         placeholder="¿Qué tema no puede faltar?"
@@ -301,13 +298,13 @@ export default function App() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button 
+                    <button
                       onClick={() => handleRsvp('confirmed')}
                       className="px-8 py-3 bg-gold text-white rounded-full text-sm font-medium hover:bg-gold/90 transition-colors"
                     >
                       Sí, asistiré
                     </button>
-                    <button 
+                    <button
                       onClick={() => handleRsvp('declined')}
                       className="px-8 py-3 border border-gold text-gold rounded-full text-sm font-medium hover:bg-gold/10 transition-colors"
                     >
@@ -316,7 +313,7 @@ export default function App() {
                   </div>
                 </motion.div>
               ) : rsvpStatus === 'confirmed' ? (
-                <motion.div 
+                <motion.div
                   key="confirmed"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -328,7 +325,7 @@ export default function App() {
                   <button onClick={() => setRsvpStatus('pending')} className="text-xs text-gray-400 underline">Cambiar respuesta</button>
                 </motion.div>
               ) : (
-                <motion.div 
+                <motion.div
                   key="declined"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -349,47 +346,35 @@ export default function App() {
           <SectionTitle subtitle="INFORMACIÓN IMPORTANTE">Ten en cuenta</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[3/4] rounded-full overflow-hidden border-8 border-cream">
-              <img 
-                src={coupleImage} 
-                alt="Karina & Javier" 
+              <img
+                src={coupleImageV}
+                alt="Karina & Javier"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="space-y-8">
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-gold mb-4">Para Ella</p>
-                <div className="flex gap-3">
-                  {['#E6B8B8', '#4A1C1C', '#F5F5DC'].map(color => (
-                    <div key={color} className="w-8 h-8 rounded-full shadow-inner border border-gray-100" style={{ backgroundColor: color }} />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-gold mb-4">Para Él</p>
-                <div className="flex gap-3">
-                  {['#1A1A1A', '#2C3E50'].map(color => (
-                    <div key={color} className="w-8 h-8 rounded-full shadow-inner border border-gray-100" style={{ backgroundColor: color }} />
-                  ))}
-                </div>
-              </div>
-              <Card className="bg-cream border-none space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="p-2 bg-white rounded-lg flex items-center justify-center">
-                    <AnimatedIcon icon={Info} size="w-4 h-4" className="text-gold" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">Dress Code: <span className="font-light italic">look canchero</span></p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="p-2 bg-white rounded-lg flex items-center justify-center">
-                    <AnimatedIcon icon={CheckCircle2} size="w-4 h-4" className="text-gold" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">¡Los niños también son bienvenidos!</p>
-                  </div>
-                </div>
+            <div className="w-full">
+              <Card className="bg-cream border-none px-6 py-2">
+                <FAQItem
+                  question="¿CÓMO ME VISTO?"
+                  answer="Nuestro dress code es relajado y cómodo. Venite con un look canchero, en el que te sientas vos mismo y puedas disfrutar toda la noche sin preocuparte por el outfit."
+                />
+                <FAQItem
+                  question="¿QUÉ LES REGALO?"
+                  answer="Para nosotros, el mejor regalo es que nos acompañes en este día tan especial. Tu presencia y buena energía son todo lo que necesitamos para celebrar nuestro amor; no hace falta nada más."
+                />
+                <FAQItem
+                  question="¿PUEDO LLEVAR A LOS PEQUES?"
+                  answer="¡Claro que sí! Están todos más que bienvenidos, tanto adultos como niños. La idea es estar juntos con la mejor onda y disfrutar de este gran día en familia."
+                />
+                <FAQItem
+                  question="¿DÓNDE ESTACIONO?"
+                  answer="El salón/parroquia cuenta con espacio para estacionar con comodidad muy cerquita del ingreso. Te recomendamos llegar unos minutos antes para evitar vueltas innecesarias."
+                />
+                <FAQItem
+                  question="¿QUÉ PASA SI TENGO MÁS DUDAS?"
+                  answer="Si todavía te quedó alguna pregunta, escribinos por WhatsApp / Instagram y te ayudamos con lo que necesites para que solo te preocupes por disfrutar."
+                />
               </Card>
             </div>
           </div>
@@ -420,32 +405,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section>
-          <SectionTitle subtitle="BLOQUES / FAQS">Antes de que nos consultes…</SectionTitle>
-          <Card className="bg-cream border-none px-8 py-4">
-            <FAQItem 
-              question="¿CÓMO ME VISTO?" 
-              answer="Nuestro dress code es relajado y cómodo. Venite con un look canchero, en el que te sientas vos mismo y puedas disfrutar toda la noche sin preocuparte por el outfit."
-            />
-            <FAQItem 
-              question="¿QUÉ LES REGALO?" 
-              answer="Para nosotros, el mejor regalo es que nos acompañes en este día tan especial. Tu presencia y buena energía son todo lo que necesitamos para celebrar nuestro amor; no hace falta nada más."
-            />
-            <FAQItem 
-              question="¿PUEDO LLEVAR A LOS PEQUES?" 
-              answer="¡Claro que sí! Están todos más que bienvenidos, tanto adultos como niños. La idea es estar juntos con la mejor onda y disfrutar de este gran día en familia."
-            />
-            <FAQItem 
-              question="¿DÓNDE ESTACIONO?" 
-              answer="El salón/parroquia cuenta con espacio para estacionar con comodidad muy cerquita del ingreso. Te recomendamos llegar unos minutos antes para evitar vueltas innecesarias."
-            />
-            <FAQItem 
-              question="¿QUÉ PASA SI TENGO MÁS DUDAS?" 
-              answer="Si todavía te quedó alguna pregunta, escribinos por WhatsApp / Instagram y te ayudamos con lo que necesites para que solo te preocupes por disfrutar."
-            />
-          </Card>
-        </section>
+
 
         <footer className="text-center pt-12 pb-24 border-t border-gray-100">
           <p className="text-sm uppercase tracking-[0.3em] text-gold mb-4 font-medium">Te esperamos</p>
