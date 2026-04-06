@@ -179,7 +179,7 @@ export default function App() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative z-10 text-center px-4 mt-28 md:mt-32"
+          className="relative z-10 text-center px-4 mt-[180px] md:mt-[220px]"
         >
           <h1 className="text-6xl md:text-8xl font-serif mb-6">
             Karina & <br className="md:hidden" /> Javier
@@ -198,6 +198,22 @@ export default function App() {
       </section>
 
       <div className="max-w-2xl mx-auto px-6 py-24 space-y-32">
+        {/* Cita Romántica */}
+        <section className="relative rounded-2xl overflow-hidden shadow-md">
+          <div className="absolute inset-0 z-0 border border-gold/10 rounded-2xl">
+            <img 
+              src="/rings.jpg" 
+              alt="Anillos y flores" 
+              className="w-full h-full object-cover object-center brightness-[0.6]"
+            />
+          </div>
+          <div className="relative z-10 py-24 px-8 text-center flex flex-col items-center justify-center min-h-[400px]">
+            <p className="text-xl md:text-2xl font-serif italic text-white/95 leading-relaxed drop-shadow-lg tracking-wide">
+              "En cada paso juntos, encontramos <br /> la plenitud del amor divino."
+            </p>
+          </div>
+        </section>
+
         {/* Cuándo & Dónde */}
         <section>
           <SectionTitle subtitle="DETALLES DEL EVENTO">Cuándo & Dónde</SectionTitle>
